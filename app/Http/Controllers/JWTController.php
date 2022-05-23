@@ -42,12 +42,28 @@ class JWTController extends Controller
         $token = auth()->attempt($data);
 
         if (!$token) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            return response()->json(['error' => 'Dados inválidos!'], 401);
         }
 
         return $this->respondWithToken($token);
     }
 
+    public function logout()
+    {
+        auth()->logout();
+
+        return response()->json(['message' => 'Logout realizado com sucesso!']);
+    }
+
+    public function refresh()
+    {
+        return $this->respondWithToken(auth()->refresh());
+    }
+
+    public function profile()
+    {
+        return response()->json(auth()->user());
+    }
 
     protected function respondWithToken($token)
     {
