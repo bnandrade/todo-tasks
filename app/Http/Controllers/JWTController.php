@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -19,19 +20,41 @@ class JWTController extends Controller
         $this->middleware('auth:api', ['except' => ['login', 'register']]);
     }
 
-
     public function register(RegisterRequest $request)
     {
+        $data = $request->validated();
 
         $user = User::query()->create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password)
+            'name' => $data->name,
+            'email' => $data->email,
+            'password' => Hash::make($data->password)
         ]);
 
         return response()->json([
             'message' => 'Usuário registrado com sucesso',
             'user' => $user
         ], 201);
+    }
+
+    public function login(LoginRequest $request)
+    {
+        $data = $request->validated();
+        $token = auth()->attempt($data);
+
+        if (!$token) {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+
+        return $this->respondWithToken($token);
+    }
+
+
+    protected function respondWithToken($token)
+    {
+        return response()->json([
+            'access_token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => auth()->factory()->getTTL() * 60
+        ]);
     }
 }

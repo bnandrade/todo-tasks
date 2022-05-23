@@ -2,11 +2,11 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Contracts\Validation\Validator;
 
-class RegisterRequest extends FormRequest
+class LoginRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,11 +23,10 @@ class RegisterRequest extends FormRequest
      *
      * @return array
      */
-    public function rules(): array
+    public function rules()
     {
         return [
-            'name' => 'required|string|min:2|max:100',
-            'email' => 'required|string|email|max:100|unique:users',
+            'email' => 'required|email',
             'password' => 'required|string|min:6',
         ];
     }
@@ -44,10 +43,9 @@ class RegisterRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'name.required' => 'O campo Nome é obrigatório',
             'email.required' => 'O campo Email é obrigatório',
             'email.email' => 'Email inválido',
-            'password.required' => 'O campo password é obrigatório',
+            'password.required' => 'O campo Password é obrigatório',
             'password.min' => 'O password deve ter pelo menos 6 caracteres'
         ];
     }
