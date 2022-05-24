@@ -34,6 +34,7 @@ class JWTController extends Controller
             'message' => 'Usuário registrado com sucesso',
             'user' => $user
         ], 201);
+
     }
 
     public function login(LoginRequest $request)
