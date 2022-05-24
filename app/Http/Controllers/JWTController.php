@@ -48,6 +48,9 @@ class JWTController extends Controller
         return $this->respondWithToken($token);
     }
 
+    /*
+     * Como usuário quero poder fazer logoff do sistema.
+     */
     public function logout()
     {
         auth()->logout();

@@ -24,6 +24,11 @@ Route::group(['middleware' => 'api'], function($router) {
     Route::post('/profile', [JWTController::class, 'profile'])->name('profile');
 
     Route::post('/tasks', [TaskController::class, 'tasks'])->name('tasks');
-    Route::post('/tasks-status/{status?}', [TaskController::class, 'tasksStatus'])->name('tasks.status');
+    Route::post('/tasksStatus/{status?}', [TaskController::class, 'tasksStatus'])->name('tasks.status');
+    Route::put('/taskStatus/{id}', [TaskController::class, 'updateStatus'])->name('task.update.status');
+    Route::put('/taskDescription/{id}', [TaskController::class, 'updateDescription'])->name('task.update.description');
+    Route::post('/task', [TaskController::class, 'create'])->name('task.create');
+    Route::delete('/taskDelete/{id}', [TaskController::class, 'taskDelete'])->name('task.delete');
+
 
 });
