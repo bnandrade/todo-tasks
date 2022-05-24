@@ -1,63 +1,97 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
+## Sobre o Todo Tasks
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Todo Tasks é uma api que gerencia uma lista de tarefas e possui sistema de autenticação por meio de Token JWT.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### **As principais funcionalidades do sistema são as seguintes:**
 
-## Learning Laravel
+- Endpoint para o Registro do Usuário;
+- Endpoint para o Login do Usuário;
+- Endpoint que possibilita o usuário ver todas as suas tarefas (através do login);
+- Endpoint que possibilita o usuário identificar quais tarefas ainda não concluiu;
+- Endpoint que possibilita o usuário identificar quais tarefas já concluiu;
+- Endpoint que possibilita o usuário marcar uma tarefa como concluída;
+- Endpoint que possibilita o usuário cadastrar novas tarefas;
+- Endpoint que possibilita o usuário alterar a descrição de uma tarefa;
+- Endpoint que possibilita o usuário excluir uma tarefa;
+- Endpoint que possibilita o usuário ver um relatório com suas tarefas por status;
+- Endpoint que possibilita o usuário fazer logoff do sistema;
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Tecnologias utilizadas:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- [PHP +7.4]
+- [Framework Laravel 8.x](https://laravel.com/)
+- [Laravel sail](https://laravel.com/docs/9.x/sail#installing-sail-into-existing-applications).
+- [MySQL]
 
-## Laravel Sponsors
+## Development setup
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Basta clonar este repo e dar os comandos abaixo:
 
-### Premium Partners
+```sh
+composer install
+php artisan jwt:secret
+npm install
+npm run dev
+php artisan migrate
+php artisan db:seed
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+```sh
+Verificar as configurações no arquivo .env
+```
 
-## Contributing
+### Prints do Sistema
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+<img src="./public/prints/01.png">
+<em>Endpoint de Cadastro de Usuário</em>
 
-## Code of Conduct
+<hr>
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+<img src="./public/prints/02.png">
+<em>Endpoint de Login Usuário</em>
 
-## Security Vulnerabilities
+<hr>
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+<img src="./public/prints/03.png">
+<em>Endpoint de Dados do Usuário</em>
+
+<hr>
+
+<img src="./public/prints/04.png">
+<em>Endpoint de Listagens das tarefas do Usuário</em>
+
+<hr>
+
+<img src="./public/prints/05.png">
+<em>Endpoint de Listagens das tarefas com status pendente</em>
+
+<hr>
+
+<img src="./public/prints/06.png">
+<em>Endpoint de Listagens das tarefas com status finalizada</em>
+
+<hr>
+
+<img src="./public/prints/07.png">
+<em>Endpoint de Cadastro de tarefa</em>
+
+<hr>
+
+<img src="./public/prints/08.png">
+<em>Endpoint de Alteração de descrição de tarefa</em>
+
+<hr>
+
+<img src="./public/prints/09.png">
+<em>Endpoint de Exclusão de tarefa</em>
+
+### Autor
+
+- [Bruno Andrade](https://github.com/bnandrade)
 
 ## License
 
