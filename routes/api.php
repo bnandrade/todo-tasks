@@ -17,18 +17,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['middleware' => 'api'], function($router) {
-    Route::post('/register', [JWTController::class, 'register'])->name('register');
-    Route::post('/login', [JWTController::class, 'login'])->name('login');
-    Route::post('/logout', [JWTController::class, 'logout'])->name('logout');
-    Route::post('/refresh', [JWTController::class, 'refresh'])->name('refresh');
-    Route::post('/profile', [JWTController::class, 'profile'])->name('profile');
+    Route::post('/register', [JWTController::class, 'register'])->name('api.register');
+    Route::post('/login', [JWTController::class, 'login'])->name('api.login');
+    Route::post('/logout', [JWTController::class, 'logout'])->name('api.logout');
+    Route::post('/refresh', [JWTController::class, 'refresh'])->name('api.refresh');
+    Route::post('/profile', [JWTController::class, 'profile'])->name('api.profile');
 
-    Route::post('/tasks', [TaskController::class, 'tasks'])->name('tasks');
-    Route::post('/tasksStatus/{status?}', [TaskController::class, 'tasksStatus'])->name('tasks.status');
-    Route::put('/taskStatus/{id}', [TaskController::class, 'updateStatus'])->name('task.update.status');
-    Route::put('/taskDescription/{id}', [TaskController::class, 'updateDescription'])->name('task.update.description');
-    Route::post('/task', [TaskController::class, 'create'])->name('task.create');
-    Route::delete('/taskDelete/{id}', [TaskController::class, 'taskDelete'])->name('task.delete');
-
+    Route::post('/tasks', [TaskController::class, 'tasks'])->name('api.tasks');
+    Route::post('/tasksStatus/{status?}', [TaskController::class, 'tasksStatus'])->name('api.tasks.status');
+    Route::put('/taskStatus/{id}', [TaskController::class, 'updateStatus'])->name('api.task.update.status');
+    Route::put('/taskDescription/{id}', [TaskController::class, 'updateDescription'])->name('api.task.update.description');
+    Route::post('/task', [TaskController::class, 'create'])->name('api.task.create');
+    Route::delete('/taskDelete/{id}', [TaskController::class, 'taskDelete'])->name('api.task.delete');
 
 });
