@@ -17,7 +17,7 @@ class JWTController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login', 'register']]);
+        $this->middleware('auth', ['except' => ['login', 'register']]);
     }
 
     public function register(RegisterRequest $request)
@@ -25,9 +25,9 @@ class JWTController extends Controller
         $data = $request->validated();
 
         $user = User::query()->create([
-            'name' => $data->name,
-            'email' => $data->email,
-            'password' => Hash::make($data->password)
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password'])
         ]);
 
         return response()->json([

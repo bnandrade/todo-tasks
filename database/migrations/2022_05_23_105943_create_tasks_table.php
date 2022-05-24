@@ -16,9 +16,10 @@ class CreateTasksTable extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
+            $table->string('title','190');
             $table->string('description','500');
             $table->enum('status', ['pendente', 'finalizada'])->default('pendente');
-            $table->foreignIdFor(User::class)->index();
+            $table->foreignIdFor(User::class)->unsigned()->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
